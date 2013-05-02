@@ -1,0 +1,167 @@
+#include "WSheet.h"
+
+#include <QFile>
+#include <QTextStream>
+#include <QStringList>
+#include <QDebug>
+
+WSheet::WSheet(QObject *parent) :
+    QObject(parent)
+{
+    connect(&_voice, SIGNAL(readingCompleted()),
+            this, SIGNAL(voiceCompleted()));
+}
+
+QString WSheet::textAt(int idx)
+{
+    if( idx<0 || idx>= (int)_warry.size())  return QString::null;
+    return _warry.at(idx).text();
+}
+
+Word::WordStatus WSheet::statusAt(int idx)
+{
+    if( idx<0 || idx>= (int)_warry.size())  return Word::NonTest;
+    return (Word::WordStatus)_warry.at(idx).status();
+}
+
+QString WSheet::statusNameAt(int idx)
+{
+    if( idx<0 || idx>= (int)_warry.size())  return QString::null;
+    return Word::statusName(_warry.at(idx).status());
+}
+
+QString WSheet::answerAt(int idx)
+{
+    if( idx<0 || idx>= (int)_warry.size())  return QString::null;
+    return _warry.at(idx).answer();
+}
+
+void WSheet::setText(QString txt, int idx)
+{
+    if( idx<0 || idx>= (int)_warry.size())  return;
+    _warry.at(idx).setText(txt);
+}
+
+void WSheet::setStatus(Word::WordStatus sta, int idx)
+{
+    if( idx<0 || idx>= (int)_warry.size())  return;
+    _warry.at(idx).setStatus(sta);
+}
+
+void WSheet::setAnswer(QString ans, int idx)
+{
+    if( idx<0 || idx>= (int)_warry.size())  return;
+    _warry.at(idx).setAnswer(ans);
+}
+
+void WSheet::eraseAt(int idx)
+{
+    if( idx<0 || idx>= (int)_warry.size())  return;
+    _warry.erase(_warry.begin()+idx);
+}
+
+void WSheet::pushBack(const Word& word)
+{
+    _warry.push_back( word);
+}
+
+bool WSheet::initReader()
+{
+    return _voice.initial();
+}
+
+void WSheet::readTextAt(int idx)
+{
+    QString text = textAt(idx);
+    if( !text.isEmpty()) {
+        _voice.speakForeign( text);
+    }
+}
+
+void WSheet::readPause()
+{
+    _voice.pause();
+}
+
+void WSheet::readResume()
+{
+    _voice.resume();
+}
+
+int WSheet::size()
+{
+    return (int)_warry.size();
+}
+
+bool WSheet::isRememberedAt(int idx)
+{
+    if( idx<0 || idx>= (int)_warry.size())  return false;
+    return _warry.at(idx).isRemembered();
+}
+
+bool WSheet::isForgottenAt(int idx)
+{
+    if( idx<0 || idx>= (int)_warry.size())  return false;
+    return _warry.at(idx).isForgotten();
+}
+
+bool WSheet::hasAnswerAt(int idx)
+{
+    if( idx<0 || idx>= (int)_warry.size())  return false;
+    return _warry.at(idx).hasAnswer();
+}
+
+bool WSheet::loadFile( const QString& fileName, bool append)
+{
+    QFile file( fileName);
+    if( file.open(QIODevice::ReadOnly)) {
+        if( !append) {
+            _warry.clear();
+        }
+
+        QTextStream in(&file);
+        in.setCodec("UTF-8");
+        while( !in.atEnd()) {
+            QString line = in.readLine();
+            if( line.isEmpty())
+                continue;
+
+            QStringList fields = line.split(',');
+            Word w;
+            if( fields.size()>= 1)  {
+                QStringList subs = fields.at(0).split("\\\\");
+                if( subs.size()>= 1)  //text
+                    w.setText( subs.at(0));
+                if( subs.size()>= 2)  //answer
+                    w.setAnswer( subs.at(1));
+            }
+            if( fields.size()>= 2)  //status
+                w.setStatus( fields.at(1).toInt());
+            _warry.push_back( w);
+        }
+
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+bool WSheet::saveFile(const QString &fileName)
+{
+    QFile file( fileName);
+    if( file.open(QIODevice::WriteOnly)) {
+        QTextStream out(&file);
+        out.setCodec("UTF-8");
+        WordArray::iterator it;
+        for(it= _warry.begin(); it!= _warry.end(); ++it) {
+            out<< it->text();
+            if( it->hasAnswer())
+                out<<"\\\\"<< it->answer();
+            out<< ", ";
+            out<< QString::number(it->status())<< endl;
+        }
+        return true;
+    }
+    return false;
+}

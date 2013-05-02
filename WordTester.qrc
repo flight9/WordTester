@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/No.ico</file>
+        <file>images/Yes.ico</file>
+        <file>images/boss.ico</file>
+        <file>images/folderopen.ico</file>
+        <file>images/Stop.ico</file>
+        <file>images/savemoney.ico</file>
+        <file>images/question.ico</file>
+        <file>images/speaker.png</file>
+        <file>images/pause.ico</file>
+        <file>images/playoff.ico</file>
+        <file>images/playon.ico</file>
+    </qresource>
+</RCC>

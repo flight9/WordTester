@@ -1,0 +1,7 @@
+1. QMenu增加删除单项功能 - Done!
+
+2. 嵌入google广告
+
+3. 连续朗读 - Done!
+
+4. 按钮R/F 快捷键 - Done!
