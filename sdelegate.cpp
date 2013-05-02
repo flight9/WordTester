@@ -1,7 +1,8 @@
 #include "sdelegate.h"
 
-#include "word.h"
 #include <QComboBox>
+#include <QDebug>
+#include "word.h"
 
 SDelegate::SDelegate(int statuscolumn, QObject *parent) :
     QItemDelegate(parent)
@@ -24,6 +25,20 @@ void SDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, con
 
         // draw as plain text
         QStyleOptionViewItem myOption = option;
+        if( status == Word::Forgotten) {
+            QColor c = FORGOTTEN_COLOR;
+            myOption.palette.setColor(QPalette::Normal, QPalette::HighlightedText, c);
+            myOption.palette.setColor(QPalette::Normal, QPalette::Text, c);
+            myOption.palette.setColor(QPalette::Inactive, QPalette::HighlightedText, c);
+            myOption.palette.setColor(QPalette::Inactive, QPalette::Text, c);
+        }
+        else if(status == Word::Remembered) {
+            QColor c = REMEMBERED_COLOR;
+            myOption.palette.setColor(QPalette::Normal, QPalette::HighlightedText, c);
+            myOption.palette.setColor(QPalette::Normal, QPalette::Text, c);
+            myOption.palette.setColor(QPalette::Inactive, QPalette::HighlightedText, c);
+            myOption.palette.setColor(QPalette::Inactive, QPalette::Text, c);
+        }
         drawDisplay( painter, myOption, myOption.rect, text);
         drawFocus( painter, myOption, myOption.rect);
     }
@@ -40,6 +55,8 @@ QWidget* SDelegate::createEditor(QWidget *parent, const QStyleOptionViewItem &op
         combox->addItem( Word::statusName( Word::NonTest), Word::NonTest);
         combox->addItem( Word::statusName( Word::Forgotten), Word::Forgotten);
         combox->addItem( Word::statusName( Word::Remembered), Word::Remembered);
+        combox->setItemData(1, FORGOTTEN_COLOR, Qt::TextColorRole);
+        combox->setItemData(2, REMEMBERED_COLOR, Qt::TextColorRole);
         connect( combox, SIGNAL(currentIndexChanged(int)),
                  this, SLOT(commitAndCloseEditor()));
 

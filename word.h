@@ -7,6 +7,9 @@ using namespace std;
 #include <QObject>
 #include <QString>
 
+#define FORGOTTEN_COLOR   (Qt::red)
+#define REMEMBERED_COLOR  (Qt::darkGreen)
+
 class Word
 {
 public:
