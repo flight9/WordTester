@@ -157,7 +157,7 @@ void Dialog::setSheetAndTable(WSheet* wsheet, WTable* table, int order)
     connect( wsheet, SIGNAL(voiceCompleted()), this, SLOT(handleVoiceCompleted()));
 }
 
-void Dialog::closeEvent( QCloseEvent* event )
+void Dialog::closeEvent( QCloseEvent* /*event*/ )
 {
     int yes = 0;
     int no = 0;

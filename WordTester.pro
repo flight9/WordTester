@@ -23,8 +23,11 @@ SOURCES += main.cpp\
     tdialog.cpp \
     WSheet.cpp \
     menu/XActionMenu.cpp \
-    menu/QMenuPrivate.cpp \
-    voice/XpTTSVoice.cpp
+    menu/QMenuPrivate.cpp
+
+win32 {
+    SOURCES += voice/XpTTSVoice.cpp
+}
 
 HEADERS  += dialog.h \
     word.h \
@@ -35,8 +38,12 @@ HEADERS  += dialog.h \
     tdialog.h \
     WSheet.h \
     menu/XActionMenu.h \
-    voice/XpTTSVoice.h \
     main.h
+
+win32 {
+    HEADERS += voice/XpTTSVoice.h
+}
+
 
 FORMS    += dialog.ui \
     mdialog.ui \

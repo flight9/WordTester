@@ -8,8 +8,10 @@
 WSheet::WSheet(QObject *parent) :
     QObject(parent)
 {
+#ifdef Q_OS_WIN32
     connect(&_voice, SIGNAL(readingCompleted()),
             this, SIGNAL(voiceCompleted()));
+#endif
 }
 
 QString WSheet::textAt(int idx)
@@ -67,25 +69,35 @@ void WSheet::pushBack(const Word& word)
 
 bool WSheet::initReader()
 {
+#ifdef Q_OS_WIN32
     return _voice.initial();
+#else
+    return false;
+#endif
 }
 
 void WSheet::readTextAt(int idx)
 {
     QString text = textAt(idx);
     if( !text.isEmpty()) {
+#ifdef Q_OS_WIN32
         _voice.speakForeign( text);
+#endif
     }
 }
 
 void WSheet::readPause()
 {
+#ifdef Q_OS_WIN32
     _voice.pause();
+#endif
 }
 
 void WSheet::readResume()
 {
+#ifdef Q_OS_WIN32
     _voice.resume();
+#endif
 }
 
 int WSheet::size()

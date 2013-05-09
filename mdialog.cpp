@@ -46,7 +46,7 @@ MDialog::MDialog(QWidget *parent) :
     setAcceptDrops( true);
 
     //
-    _kanbox = NULL;
+//    _kanbox = NULL;
 
 }
 
@@ -422,21 +422,21 @@ void MDialog::on_resetButton_clicked()
 void MDialog::on_kanboxExecLabel_linkActivated(const QString&)
 {
     // Load .qm and .dll
-    if( !_kanbox) {
-        loadLanguage("KanboxPlugin");
-        QPluginLoader loader("KanboxPlugin.dll");
-        QObject* obj = loader.instance();
-        _kanbox = qobject_cast<KanboxInterface*>(obj);
-        if( obj && _kanbox) {
-            connect(obj, SIGNAL(downloadFinished(QString)),
-                    this, SLOT(handleKanboxDownloaded(QString)));
-        }
-    }
+//    if( !_kanbox) {
+//        loadLanguage("KanboxPlugin");
+//        QPluginLoader loader("KanboxPlugin.dll");
+//        QObject* obj = loader.instance();
+//        _kanbox = qobject_cast<KanboxInterface*>(obj);
+//        if( obj && _kanbox) {
+//            connect(obj, SIGNAL(downloadFinished(QString)),
+//                    this, SLOT(handleKanboxDownloaded(QString)));
+//        }
+//    }
 
-    // Invoke
-    if( _kanbox) {
-        if( !_curFile.isEmpty())
-            _kanbox->setAboutToUpload(_curFile);
-        _kanbox->execDialog();
-    }
+//    // Invoke
+//    if( _kanbox) {
+//        if( !_curFile.isEmpty())
+//            _kanbox->setAboutToUpload(_curFile);
+//        _kanbox->execDialog();
+//    }
 }

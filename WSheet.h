@@ -4,7 +4,10 @@
 #include <QObject>
 
 #include "word.h"
+
+#ifdef Q_OS_WIN32
 #include "voice/XpTTSVoice.h"
+#endif
 
 class WSheet : public QObject
 {
@@ -42,7 +45,9 @@ signals:
 
 private:
     WordArray _warry;
+#ifdef Q_OS_WIN32
     XpTTSVoice _voice;
+#endif
 };
 
 #endif // WSHEET_H
