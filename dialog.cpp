@@ -15,7 +15,7 @@ Dialog::Dialog(QWidget *parent) :
 
     //
     _wsheet = NULL;
-    setWindowFlags( Qt::WindowMinMaxButtonsHint);
+    setWindowFlags( Qt::WindowMinMaxButtonsHint|Qt::WindowCloseButtonHint);
 
     //
     _playing = false;

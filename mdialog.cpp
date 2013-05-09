@@ -22,7 +22,7 @@ MDialog::MDialog(QWidget *parent) :
     ui->setupUi(this);
 
     //
-    setWindowFlags( Qt::WindowMinimizeButtonHint);
+    setWindowFlags( Qt::WindowMinimizeButtonHint|Qt::WindowCloseButtonHint);
     setWindowTitle(tr("Word Tester[*]"));
 
     //
