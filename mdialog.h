@@ -6,7 +6,7 @@
 #include <QAction>
 
 #include "WSheet.h"
-//#include "../KanboxPlugin/KanboxInterface.h"
+#include "../KanboxPlugin/KanboxInterface.h"
 
 class QTableWidgetItem;
 class QTableWidgetSelectionRange;
@@ -64,7 +64,7 @@ private:
     QList<QAction*> _recentActions;
     QAction* _recentSeparator;
     QAction* _clearRecentAction;
-//    KanboxInterface* _kanbox;
+    KanboxInterface* _kanbox;
 
 private slots:
     void on_addButton_clicked();
