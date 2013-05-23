@@ -29,7 +29,8 @@ Dialog::Dialog(QWidget *parent) :
     set.endGroup();
 
     //
-    QHBoxLayout* hboxLayout = new QHBoxLayout;
+    QHBoxLayout* playLayout = new QHBoxLayout;
+    playLayout->setMargin(4);
     _playBtn = new QPushButton(this);
     _playBtn->setFlat(true);
     _playBtn->setIconSize(QSize(32,32));
@@ -50,23 +51,35 @@ Dialog::Dialog(QWidget *parent) :
     _spaceSpin->setValue(spaceTime);
     connect(_playBtn, SIGNAL(clicked()), this, SLOT(handlePlaybtnClicked()));
     connect(_stopBtn, SIGNAL(clicked()), this, SLOT(handleStopbtnClicked()));
-    hboxLayout->addWidget(_progLabel);
-    hboxLayout->addStretch();
-    hboxLayout->addWidget( _playBtn);
-    hboxLayout->addWidget( _stopBtn);
-    hboxLayout->addStretch();
-    hboxLayout->addWidget(new QLabel(tr("Spacing:"), this));
-    hboxLayout->addWidget(_spaceSpin);
-
-    QGroupBox* topbar = new QGroupBox(this);
-    hboxLayout->setMargin(4);
-    topbar->setLayout( hboxLayout);
+    playLayout->addWidget(_progLabel);
+    playLayout->addStretch();
+    playLayout->addWidget( _playBtn);
+    playLayout->addWidget( _stopBtn);
+    playLayout->addStretch();
+    playLayout->addWidget(new QLabel(tr("Spacing:"), this));
+    playLayout->addWidget(_spaceSpin);
+    QGroupBox* playBar = new QGroupBox(this);
+    playBar->setLayout( playLayout);
+    playBar->setVisible( false);
 
     _gridLayout = new QGridLayout;
 
+    QHBoxLayout* buttonsLayout = new QHBoxLayout;
+    QPushButton* showPlayBar = new QPushButton(this);
+    showPlayBar->setText(tr("Read All"));
+    showPlayBar->setCheckable(true);
+    showPlayBar->setFocusPolicy(Qt::ClickFocus);
+    connect( showPlayBar, SIGNAL(clicked(bool)),
+             playBar, SLOT(setVisible(bool)));
+    buttonsLayout->addWidget( showPlayBar);
+    QLabel* seperator = new QLabel(this);
+    seperator->setFrameStyle(QFrame::HLine|QFrame::Sunken);
+    buttonsLayout->addWidget( seperator, 1);
+
     QVBoxLayout* mainLayout = new QVBoxLayout;
-    mainLayout->addWidget( topbar);
     mainLayout->addLayout( _gridLayout);
+    mainLayout->addLayout( buttonsLayout);
+    mainLayout->addWidget( playBar);
     setLayout( mainLayout);
 }
 

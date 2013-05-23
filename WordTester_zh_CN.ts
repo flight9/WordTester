@@ -6,70 +6,75 @@
     <message>
         <location filename="dialog.ui" line="14"/>
         <source>Testing...</source>
-        <translation>测试中……</translation>
+        <translation type="unfinished">测试中…</translation>
     </message>
     <message>
-        <location filename="dialog.cpp" line="126"/>
+        <location filename="dialog.cpp" line="146"/>
         <source>Arial</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dialog.cpp" line="89"/>
+        <location filename="dialog.cpp" line="109"/>
         <source>Test</source>
         <translation>测试中</translation>
     </message>
     <message>
-        <location filename="dialog.cpp" line="31"/>
+        <location filename="dialog.cpp" line="37"/>
         <source>Read all words above</source>
-        <translation type="unfinished">朗读全部单词</translation>
+        <translation>朗读全部单词</translation>
     </message>
     <message>
-        <location filename="dialog.cpp" line="37"/>
+        <location filename="dialog.cpp" line="43"/>
         <source>Stop</source>
         <translation>停止</translation>
     </message>
     <message>
-        <location filename="dialog.cpp" line="52"/>
+        <location filename="dialog.cpp" line="59"/>
         <source>Spacing:</source>
         <translation>间隔(s)：</translation>
     </message>
     <message>
-        <location filename="dialog.cpp" line="90"/>
+        <location filename="dialog.cpp" line="69"/>
+        <source>Read All</source>
+        <translation>朗读全部</translation>
+    </message>
+    <message>
+        <location filename="dialog.cpp" line="110"/>
         <source>The list is too long, we only select 100 of them to test.</source>
         <translation>列表太长，我们只选取前100个测试。</translation>
     </message>
     <message>
-        <location filename="dialog.cpp" line="130"/>
+        <location filename="dialog.cpp" line="150"/>
         <source>Click &lt;img src=&quot;:/images/speaker.png&quot; /&gt; or press &apos;S&apos; to speak</source>
         <translation>单击&lt;img src=&quot;:/images/speaker.png&quot; /&gt;或按&apos;S&apos;键朗读</translation>
     </message>
     <message>
-        <location filename="dialog.cpp" line="168"/>
+        <location filename="dialog.cpp" line="190"/>
         <source>Remembered: %1 &lt;br&gt;Forgotton: %2 &lt;br&gt;Total Number: %3 &lt;br&gt;-----------------------------&lt;br&gt;</source>
         <translation>记住了：%1 &lt;br&gt;忘记的：%2 &lt;br&gt;总单词数：%3 &lt;br&gt;-----------------------------&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="dialog.cpp" line="174"/>
+        <location filename="dialog.cpp" line="196"/>
         <source>Completeness: %1 %&lt;/font&gt;</source>
         <translation>完成度：%1 %&lt;/font&gt;</translation>
     </message>
     <message>
-        <location filename="dialog.cpp" line="175"/>
+        <location filename="dialog.cpp" line="197"/>
         <source>Result</source>
         <translation>测试结果</translation>
     </message>
     <message>
-        <location filename="dialog.cpp" line="252"/>
+        <location filename="dialog.cpp" line="277"/>
         <source>Pause </source>
         <translation>暂停</translation>
     </message>
     <message>
-        <location filename="dialog.cpp" line="252"/>
+        <location filename="dialog.cpp" line="277"/>
         <source>Speak </source>
         <translation>朗读</translation>
     </message>
     <message>
-        <location filename="dialog.cpp" line="266"/>
+        <location filename="dialog.cpp" line="291"/>
         <source>%1/%2</source>
         <translation type="unfinished"></translation>
     </message>
@@ -139,8 +144,8 @@
     </message>
     <message>
         <location filename="mdialog.ui" line="200"/>
-        <source>v3.42 by Liazm</source>
-        <oldsource>v3.41 by Liazm</oldsource>
+        <source>v3.43 by Liazm</source>
+        <oldsource>v3.42 by Liazm</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
