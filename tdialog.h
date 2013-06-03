@@ -21,6 +21,7 @@ public:
 
 protected:
     bool eventFilter(QObject *ob, QEvent *ev);
+    void keyPressEvent(QKeyEvent *ev);
 
 private:
     Ui::TDialog *ui;

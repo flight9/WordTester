@@ -2,6 +2,7 @@
 #include "ui_tdialog.h"
 
 #include <QMessageBox>
+#include <QKeyEvent>
 
 TDialog::TDialog(WSheet* wsh, int id, QString num, QWidget *parent) :
     QDialog(parent),
@@ -46,6 +47,23 @@ bool TDialog::eventFilter(QObject *ob, QEvent *ev)
         return true;
     }
     return false;
+}
+
+void TDialog::keyPressEvent(QKeyEvent *ev)
+{
+    if( ev->key() == Qt::Key_S) {
+        _wsh->readTextAt(_id);
+        return;
+    }
+    else if( ev->key() == Qt::Key_R) {
+        on_yesButton_clicked();
+        return;
+    }
+    else if( ev->key() == Qt::Key_F) {
+        on_noButton_clicked();
+        return;
+    }
+    QDialog::keyPressEvent(ev);
 }
 
 void TDialog::on_answerButton_clicked()

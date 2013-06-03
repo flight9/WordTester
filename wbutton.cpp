@@ -70,13 +70,14 @@ void WButton::keyPressEvent(QKeyEvent *ev)
         emit speakerClicked();
         return;
     }
-    else if( ev->key() == Qt::Key_R) {
-        emit stateChange(true);
-        return;
-    }
-    else if( ev->key() == Qt::Key_F) {
-        emit stateChange(false);
-        return;
-    }
+// Moved into TDialog:
+//    else if( ev->key() == Qt::Key_R) {
+//        emit stateChange(true);
+//        return;
+//    }
+//    else if( ev->key() == Qt::Key_F) {
+//        emit stateChange(false);
+//        return;
+//    }
     QToolButton::keyPressEvent(ev);
 }
