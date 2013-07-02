@@ -3,5 +3,6 @@
 
 /* Global */
 bool loadLanguage(const QString name);
+void sleep(unsigned int msec);
 
 #endif // MAIN_H

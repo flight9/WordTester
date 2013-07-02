@@ -11,5 +11,6 @@
         <file>images/pause.ico</file>
         <file>images/playoff.ico</file>
         <file>images/playon.ico</file>
+        <file>images/splash.jpg</file>
     </qresource>
 </RCC>

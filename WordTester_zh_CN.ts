@@ -144,8 +144,8 @@
     </message>
     <message>
         <location filename="mdialog.ui" line="200"/>
-        <source>v3.43 by Liazm</source>
-        <oldsource>v3.42 by Liazm</oldsource>
+        <source>v3.44 by Liazm</source>
+        <oldsource>v3.43 by Liazm</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -285,6 +285,11 @@ Text file (*.txt)</source>
         <source>Unkown</source>
         <translation>未知</translation>
     </message>
+    <message>
+        <location filename="main.cpp" line="23"/>
+        <source>Loading modules...</source>
+        <translation type="unfinished">装载模块...</translation>
+    </message>
 </context>
 <context>
     <name>TDialog</name>
@@ -337,17 +342,17 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">记住了还是忘记了？要诚实哦</translation>
     </message>
     <message>
-        <location filename="tdialog.cpp" line="12"/>
+        <location filename="tdialog.cpp" line="13"/>
         <source>(%1) Do you know:</source>
         <translation>(%1)你记得吗：</translation>
     </message>
     <message>
-        <location filename="tdialog.cpp" line="18"/>
+        <location filename="tdialog.cpp" line="19"/>
         <source>Show the Answer</source>
         <translation>显示单词意思</translation>
     </message>
     <message>
-        <location filename="tdialog.cpp" line="18"/>
+        <location filename="tdialog.cpp" line="19"/>
         <source>No Answer</source>
         <translation>意思空白</translation>
     </message>
