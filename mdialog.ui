@@ -197,7 +197,7 @@
      <item>
       <widget class="QLabel" name="versionLabel">
        <property name="text">
-        <string>v3.44 by Liazm</string>
+        <string>v3.45 by Liazm</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>

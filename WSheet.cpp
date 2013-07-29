@@ -138,18 +138,31 @@ bool WSheet::loadFile( const QString& fileName, bool append)
             if( line.isEmpty())
                 continue;
 
-            QStringList fields = line.split(',');
             Word w;
-            if( fields.size()>= 1)  {
-                QStringList subs = fields.at(0).split("\\\\");
-                if( subs.size()>= 1)  //text
-                    w.setText( subs.at(0));
-                if( subs.size()>= 2)  //answer
-                    w.setAnswer( subs.at(1));
+            QStringList fields = line.split("\\\\");
+            if( fields.size()>= 1) {  //text
+                w.setText( fields.at(0));
             }
-            if( fields.size()>= 2)  //status
-                w.setStatus( fields.at(1).toInt());
+
+            if( fields.size()> 1) {
+                QStringList subs = fields.at(1).split(',');
+                int  status = -1;
+                bool found = false;
+                if( subs.size()>=2 ) {
+                    bool ok;
+                    status = subs.last().trimmed().toInt(&ok);
+                    if( ok && subs.last().trimmed().size()<=2)
+                        found = true;
+                }
+                if( found) {
+                    w.setAnswer( fields.at(1).left( fields.at(1).lastIndexOf(',')) );  //asnwer
+                    w.setStatus( status);      //status
+                }
+                else
+                    w.setAnswer( fields.at(1));
+            }
             _warry.push_back( w);
+
         }
 
         return true;
